@@ -8,13 +8,3 @@ export default {
   name: "Header"
 };
 </script>
-<style scoped>
-.logo {
-  height: 94px;
-  line-height: 94px;
-}
-.logo img {
-  width: 9%;
-  margin-left: 91px;
-}
-</style>

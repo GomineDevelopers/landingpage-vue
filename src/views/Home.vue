@@ -17,7 +17,9 @@
       </el-row>
       <el-row class="banner_content">
         <el-col :span="8" class="flex">
-          <img class="banner_list_icon" src="../assets/banner_content_icon1.png" />
+          <span>
+            <img class="banner_list_icon" src="../assets/banner_content_icon1.png" />
+          </span>
           <el-row>
             <el-row class="banner_list_title">面向混合云环境的分析</el-row>
             <el-row class="banner_list_content">
@@ -27,7 +29,9 @@
           </el-row>
         </el-col>
         <el-col :span="8" class="flex">
-          <img class="banner_list_icon" src="../assets/banner_content_icon2.png" />
+          <span>
+            <img class="banner_list_icon" src="../assets/banner_content_icon2.png" />
+          </span>
           <el-row>
             <el-row class="banner_list_title">APTARE 应用指南</el-row>
             <el-row class="banner_list_content">
@@ -37,7 +41,9 @@
           </el-row>
         </el-col>
         <el-col :span="8" class="flex">
-          <img class="banner_list_icon" src="../assets/banner_content_icon3.png" />
+          <span>
+            <img class="banner_list_icon" src="../assets/banner_content_icon3.png" />
+          </span>
           <el-row>
             <el-row class="banner_list_title"
               >IDC Vendor Profile：APTARE 运维数据透视分析平台</el-row
@@ -220,18 +226,16 @@
             </el-col>
             <el-col :span="12">
               <el-row>
-                <el-row>
+                <el-row class="flex">
                   <img class="title_left_icon" src="../assets/content_body1_icon1.png" />
                   <span class="main_title1">APTARE IT Analytics 10.3 新增功能</span>
                 </el-row>
-                <el-row class="main_content_text">
-                  <ul>
-                    <li>支持 Veeam、Oracle RMAN、Cohesity、Rubrik、ECS、Unity 及 Hyper-V；</li>
-                    <li>接收警报并根据收集数据触发自动化操作流程，从而缩短故障解决时间；</li>
-                    <li>通过警报趋势和向下挖掘分析报告，获取新洞察并加快根本原因分析；</li>
-                    <li>基于历史数据为环境设置具体规则。</li>
-                  </ul>
-                </el-row>
+                <ul class="main_content_text">
+                  <li>支持 Veeam、Oracle RMAN、Cohesity、Rubrik、ECS、Unity 及 Hyper-V；</li>
+                  <li>接收警报并根据收集数据触发自动化操作流程，从而缩短故障解决时间；</li>
+                  <li>通过警报趋势和向下挖掘分析报告，获取新洞察并加快根本原因分析；</li>
+                  <li>基于历史数据为环境设置具体规则。</li>
+                </ul>
                 <el-row class="watch_button flex flex_align_center">
                   查看所有受支持的环境
                   <img src="../assets/content_body1_icon2.png" />
