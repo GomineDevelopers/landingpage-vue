@@ -76,7 +76,7 @@ body {
 }
 
 .logo img {
-  width: 15%;
+  width: 183px;
   margin-left: 91px;
 }
 
@@ -278,19 +278,36 @@ body {
   width: calc(100% - 5%);
   margin: 40px 0 40px 5%;
   border-bottom: 1px solid #ccc;
+  padding-right: 200px;
 }
 
 .data_manage_body2_row2 {
   margin-bottom: 60px;
+  position: relative;
 }
-
+.data_manage_body2_right {
+  width: 180px;
+  height: 380px;
+  position: absolute;
+  right: 0;
+  top: -210px;
+  background: url("../assets/data_manage_body2_img2.png") no-repeat;
+  background-size: 100% 100%;
+}
+.data_manage_body2_right img {
+  width: 140px;
+  margin-left: 10px;
+}
 .data_manage_body2_row2_title {
   width: 58%;
   margin: 0 auto;
   font-size: 40px;
   color: #000;
   font-weight: 300;
-  line-height: 70px;
+  line-height: 55px;
+  background: url("../assets/data_manage_body2_icon1.png") no-repeat;
+  background-position: center;
+  background-size: 300px 100%;
 }
 
 .data_manage_body2_row2_title2 {
@@ -388,6 +405,192 @@ body {
   margin: 20px 0px 25px 0px;
 }
 
+/* 注册页开始 */
+.register_body {
+  padding: 50px 5%;
+}
+.text_left_icon {
+  width: 15px;
+  vertical-align: sub;
+  margin-right: 8px;
+}
+.metting_title {
+  font-size: 30px;
+  color: #000;
+}
+.metting_left_item .metting_left_item_elrow {
+  margin-bottom: 20px;
+}
+.metting_left_item_content {
+  text-align: center;
+}
+.metting_content_right {
+  padding-left: 40px;
+}
+.veritas_register_title {
+  font-size: 26px;
+  color: #333;
+}
+.veritas_left_item {
+  font-size: 18px;
+  color: #333;
+  line-height: 30px;
+  margin: 20px 0px;
+}
+.veritas_text_ul {
+  margin: 30px 0px;
+}
+.veritas_right_body {
+  margin-top: -150px;
+}
+.text_left_date_icon {
+  width: 30px;
+  height: 30px;
+  vertical-align: sub;
+  margin-right: 18px;
+}
+.metting_content1 {
+  font-size: 24px;
+  color: #a8161c;
+}
+.metting_left_item {
+  margin-bottom: 40px;
+}
+.metting_schedule {
+  font-size: 16px;
+  color: #ccc;
+}
+.metting_schedule .el-row {
+  margin-bottom: 40px;
+}
+.metting_schedule span:nth-child(1) {
+  color: #000;
+  display: inline-block;
+  width: 191px;
+  height: 53px;
+  line-height: 53px;
+  background: rgba(204, 204, 204, 1);
+  box-shadow: 5px 5px 0px 0px rgba(153, 153, 153, 0.15);
+}
+.metting_schedule span:nth-child(2) {
+  color: #000;
+  display: inline-block;
+  width: 191px;
+  height: 53px;
+  line-height: 53px;
+  background: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(204, 204, 204, 1);
+  box-shadow: 5px 5px 0px 0px rgba(153, 153, 153, 0.15);
+}
+.register_lecturer_img {
+  width: 100px;
+  margin-right: 20px;
+}
+.register_lecturer_text {
+  font-size: 16px;
+  color: #333;
+  text-align: left;
+  line-height: 30px;
+}
+.apply_notice {
+  line-height: 30px;
+  color: #333;
+  font-size: 16px;
+}
+.apply_gifts {
+  margin-top: 30px;
+  justify-content: space-between;
+}
+.apply_gifts img {
+  width: 30%;
+}
+.MettingRightModule {
+  background: rgba(200, 200, 200, 1);
+  padding: 20px 30px 40px 30px;
+}
+.main_font1 {
+  font-size: 16px;
+  color: #333;
+  margin-top: 30px;
+}
+.form_content {
+  margin-top: 30px;
+}
+.form_content .el-form-item {
+  background: #fff;
+  border-radius: 4px;
+  margin-bottom: 25px;
+  overflow: hidden;
+}
+.form_content .el-form-item:last-child {
+  background: none;
+}
+.el-form-item__label {
+  text-align: left;
+  padding-left: 12px;
+  white-space: nowrap;
+  color: #333;
+}
+.form_content .el-input__inner {
+  border: 1px solid #fff;
+  border-radius: 0px;
+}
+.declare_text {
+  font-size: 14px;
+}
+.declare_text .el-checkbox {
+  margin-top: 2px;
+}
+.declare_text .el-checkbox__label {
+  font-size: 14px;
+  white-space: normal;
+}
+.declare_text span {
+  margin-left: 5px;
+}
+.declare_text a {
+  color: #a8161c;
+}
+.form_submit_button {
+  text-align: center;
+}
+.form_submit_button .el-form-item__content {
+  margin-left: 0px !important;
+}
+.form_submit_button .el-button {
+  width: 340px;
+  height: 70px;
+  background: rgba(168, 22, 28, 1);
+  border-radius: 40px;
+  border-color: rgba(168, 22, 28, 1);
+  margin-top: 25px;
+  font-size: 18px;
+}
+.form_submit_button .el-button--primary:hover {
+  border-color: none;
+}
+.form_content .el-cascader,
+.form_content .el-select {
+  width: 100%;
+}
+.el-cascader .el-input .el-input__inner:focus,
+.el-cascader .el-input.is-focus .el-input__inner {
+  border-color: #fff;
+}
+.el-cascader .el-input .el-input__inner:hover,
+.el-cascader .el-input.is-hover .el-input__inner {
+  border-color: #fff;
+}
+.el-select .el-input.is-focus .el-input__inner {
+  border-color: #fff;
+}
+.el-select .el-input__inner:focus {
+  border-color: #fff;
+}
+.el-select .el-input__inner:hover {
+  border-color: #fff;
+}
+/* 注册页结束 */
 /* 一般样式结束 */
 
 /* 适配开始 */
@@ -486,7 +689,7 @@ body {
   }
 }
 
-@media screen and (max-width:991px) {
+@media screen and (max-width: 991px) {
   .logo img {
     width: 20%;
     margin-left: 90px;
@@ -497,11 +700,8 @@ body {
   }
 
   .top_content_button {
-    bottom: -4%;
-  }
-
-  .top_content_button {
     height: 36%;
+    bottom: -4%;
   }
 
   .banner_content {
@@ -515,7 +715,7 @@ body {
   }
 
   .banner_content .el-col:nth-child(1) {
-    border-top: none
+    border-top: none;
   }
 
   .content_body1 {
@@ -532,7 +732,7 @@ body {
   }
 
   .content_body1_right img:nth-child(1) {
-    width: 80%
+    width: 80%;
   }
 
   .data_manage_body1 {
@@ -545,11 +745,12 @@ body {
 
   .data_manage_body2_row1 {
     flex-direction: column;
+    padding-right: 5%;
   }
 
   .data_manage_body2_row2_title {
     line-height: 50px;
-    width: 86%
+    width: 86%;
   }
 
   .data_manage_body2_row2_button .data_manage_body2_row2_button:nth-child(1) {
@@ -557,8 +758,8 @@ body {
   }
 
   .data_manage_body2_row2_button .data_manage_body2_row2_button {
-    width: 80%;
-    margin: 0 auto
+    width: 70%;
+    margin: 0 auto;
   }
 
   .data_manage_body2_row2_button {
@@ -581,7 +782,6 @@ body {
   .bottom_right {
     position: static;
     margin-top: 20px;
-
   }
 
   .bottom_img {
@@ -597,9 +797,21 @@ body {
     text-align: center;
     line-height: 30px;
   }
+  .bottom_content {
+    padding: 0px 5%;
+  }
+  .metting_content_right {
+    padding-left: 0px;
+  }
+  .MettingRightModule {
+    margin-bottom: 20px;
+  }
+  .veritas_right_body {
+    margin-top: 30px;
+  }
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
   .logo {
     height: 60px;
     line-height: 60px;
@@ -624,7 +836,7 @@ body {
   }
 
   .banner_content .banner_list_content {
-    font-size: 13px;
+    font-size: 14px;
     line-height: 20px;
     margin: 10px 0px 14px 0px;
   }
@@ -651,7 +863,7 @@ body {
   }
 
   .content_body1_content {
-    font-size: 13px;
+    font-size: 14px;
     line-height: 23px;
   }
 
@@ -661,5 +873,214 @@ body {
 
   .content_body1_right img:nth-child(1) {
     width: 100%;
+    height: 200px;
+  }
+  .top_content_body {
+    width: 94%;
+  }
+  .top_content {
+    top: 16%;
+  }
+  .top_content_button {
+    height: 23%;
+    bottom: -1%;
+    left: 11%;
+  }
+  .top_content_button img {
+    width: 40%;
+  }
+  .main_title1 {
+    font-size: 18px;
+  }
+  .main_title2 {
+    font-size: 16px;
+    margin-top: 13px;
+  }
+  .data_manage_body1_right .left_icon {
+    width: 11px;
+    height: 17px;
+    margin-top: 5px;
+  }
+  .main_content_text {
+    font-size: 14px;
+    padding-left: 14px;
+    line-height: 25px;
+  }
+  .watch_button img {
+    width: 19px;
+    height: 19px;
+  }
+  .main_title3 {
+    font-size: 16px;
+    margin-top: 15px;
+  }
+  .title_left_icon {
+    width: 9px;
+    height: 14px;
+    margin-top: 6px;
+  }
+  .data_manage_body2_row2_title {
+    font-size: 18px;
+    line-height: 30px;
+  }
+  .data_manage_body2_row2_title2 {
+    font-size: 16px;
+    width: 81%;
+    margin: 0 auto;
+    margin-top: 15px;
+    text-align: center;
+  }
+  .data_manage_body2_row2_logo {
+    margin: 25px 0px 25px 0px;
+  }
+  .data_manage_body2_row2_logo img {
+    width: 60%;
+    height: 120px;
+  }
+  .data_manage_body2_row2_more img {
+    width: 200px;
+    height: 50px;
+  }
+  .data_manage_body2_row2_button .data_manage_body2_row2_button {
+    width: 85%;
+  }
+  .data_manage_body2_row2_button .data_manage_body2_row2_button .el-row {
+    height: 50px;
+    line-height: 50px;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  .bottom_title {
+    height: 50px;
+    font-weight: 500;
+  }
+  .bottom_content {
+    margin-top: 10px;
+  }
+  .bottom_right_attention {
+    font-size: 16px;
+  }
+  .bottom_right img {
+    margin: 10px 0px 10px 0px;
+  }
+  .bottom_img {
+    margin-top: 25px;
+    width: 150px;
+  }
+  .bottom_copyright {
+    margin-top: 25px;
+    margin-bottom: 40px;
+    font-size: 13px;
+  }
+  .phone_footer_bottom {
+    height: 160px;
+    background: url("../assets/phone_footer_bg.png") no-repeat;
+    background-size: 100% 100%;
+    margin-top: -20px;
+    padding-top: 20px;
+  }
+  .phone_footer_bottom img {
+    width: 160px;
+    height: 60px;
+    cursor: pointer;
+  }
+  .phone_footer_bottom img:nth-child(1) {
+    margin-right: 20px;
+  }
+  .metting_content_right {
+    padding-left: 0px;
+  }
+  .form_submit_button .el-button {
+    width: 240px;
+    height: 47px;
+    font-size: 14px;
+  }
+  .register_body {
+    padding: 0px;
+    margin-top: -5px;
+  }
+  .MettingRightModule {
+    padding: 40px 15px 20px 15px;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .container {
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .corner {
+    width: 0px; /*  宽高设置为0，很重要，否则达不到效果 */
+    height: 0px;
+    border: 30px solid #000;
+    border-bottom-color: transparent; /* 设置透明背景色 */
+    border-left-color: transparent;
+    border-right-color: transparent;
+  }
+  .metting_title {
+    font-size: 20px;
+  }
+  .text_left_icon {
+    width: 11px;
+    margin-right: 4px;
+  }
+  .form_content .el-form-item__label {
+    padding-right: 0;
+  }
+  .main_font1 {
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  .xs_show_left {
+    padding: 0px 15px;
+  }
+  .text_left_date_icon {
+    width: 22px;
+    height: 22px;
+  }
+  .metting_content1 {
+    font-size: 16px;
+  }
+  .metting_schedule span:nth-child(1),
+  .metting_schedule span:nth-child(2) {
+    width: 42%;
+    height: 45px;
+    line-height: 45px;
+  }
+  .metting_schedule .el-row {
+    margin-bottom: 25px;
+  }
+  .metting_schedule {
+    font-size: 14px;
+  }
+  .apply_notice {
+    font-size: 14px;
+  }
+  .veritas_header_phone {
+    margin-top: 40px;
+  }
+  .veritas_right_body {
+    margin-top: 20px;
+  }
+  .veritas_content {
+    padding: 0px 15px;
+  }
+  .veritas_left_item {
+    font-size: 14px;
+    line-height: 25px;
+  }
+  .veritas_text_ul {
+    margin: 15px 0px;
+  }
+  .veritas_register_title {
+    font-size: 16px;
+  }
+  .apply_gifts img {
+    width: 30%;
+    height: 120px;
+  }
+  .data_manage_body2_row2_title {
+    background-size: 200px 100%;
   }
 }

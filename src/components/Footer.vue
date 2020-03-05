@@ -11,7 +11,7 @@
           </el-col>
           <el-col :xs="24" :sm="24" :md="6">
             <el-row>Veritas 联系邮箱：</el-row>
-            <e-row>veritas.china@veritas.com</e-row>
+            <el-row>veritas.china@veritas.com</el-row>
           </el-col>
           <el-col :xs="24" :sm="24" :md="6">
             <el-row>Veritas 官网：</el-row>
@@ -33,6 +33,14 @@
             <span>All rights reserved.保留所有权利</span>
           </el-row>
         </el-row>
+      </el-row>
+      <!-- 手机端底部 -->
+      <el-row
+        class="hidden-sm-and-up phone_footer_bottom flex flex_justify_center flex_align_center"
+        v-if="$route.path != '/veritasregister'"
+      >
+        <img class="hidden-sm-and-up" src="../assets/phone_top_button1.png" />
+        <img class="hidden-sm-and-up" src="../assets/phone_top_button2.png" />
       </el-row>
     </el-row>
     <!-- 底部结束 -->
