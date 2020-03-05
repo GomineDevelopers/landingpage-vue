@@ -9,7 +9,8 @@ import {
   Checkbox,
   Cascader,
   Select,
-  Option
+  Option,
+  Dialog
 } from "element-ui";
 Vue.use(Row);
 Vue.use(Col);
@@ -21,3 +22,4 @@ Vue.use(Checkbox);
 Vue.use(Cascader);
 Vue.use(Select);
 Vue.use(Option);
+Vue.use(Dialog);
