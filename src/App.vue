@@ -1,21 +1,15 @@
 <template>
   <div id="app">
     <VeritasHeader v-if="$route.path == '/veritasregister'"></VeritasHeader>
-    <Header v-else></Header>
     <router-view />
-    <Footer></Footer>
   </div>
 </template>
 <script>
-import Header from "./components/Header";
 import VeritasHeader from "./components/VeritasHeader";
-import Footer from "./components/Footer";
 export default {
   name: "Home",
   components: {
-    Header,
-    VeritasHeader,
-    Footer
+    VeritasHeader
   }
 };
 </script>

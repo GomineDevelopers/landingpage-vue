@@ -1,8 +1,11 @@
-import { get, post } from "./https";
-let baseURL1 = "http://back.zidata.cn/admin";
-let baseURL2 = "https://www.xiaoyuer.net";
+import {
+  get,
+  post
+} from "./https";
 let api = {
-  login: params => post(baseURL1 + "/login", params, 1), //登录
-  getKey: params => get(baseURL2 + "/open-api/genKey", params) //获取口令
+  register: params => post("/api/auth/register", params), //注册
+  login: params => post("/api/auth/login", params), //登录
+  refresh: params => post("/api/auth/refresh", params), //token刷新
+  action: params => post("/api/action", params) //登录
 };
 export default api;

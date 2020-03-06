@@ -30,8 +30,7 @@
               :key="item.value"
               :label="item.label"
               :value="item.value"
-            >
-            </el-option>
+            ></el-option>
           </el-select>
         </el-form-item>
         <el-form-item label="公司名称" prop="company">
@@ -44,8 +43,7 @@
               :key="item.value"
               :label="item.label"
               :value="item.value"
-            >
-            </el-option>
+            ></el-option>
           </el-select>
         </el-form-item>
         <el-form-item label="员工人数" prop="number">
@@ -55,26 +53,17 @@
               :key="item.value"
               :label="item.label"
               :value="item.value"
-            >
-            </el-option>
+            ></el-option>
           </el-select>
-          <!-- <el-input v-model="ruleForm.number"></el-input> -->
         </el-form-item>
         <el-form-item label="省份、城市" prop="city">
-          <el-cascader
-            size="large"
-            :options="options"
-            v-model="ruleForm.city"
-            @change="handleChange"
-          >
-          </el-cascader>
-          <!-- <el-input v-model="ruleForm.city"></el-input> -->
+          <el-cascader size="large" :options="options" v-model="ruleForm.city"></el-cascader>
         </el-form-item>
         <el-row class="declare_text flex">
-          <el-checkbox v-model="ruleForm.agreeChecked"></el-checkbox>
+          <el-checkbox v-model="agreeChecked"></el-checkbox>
           <span>
             我同意 Veritas 就产品和促销信息与我联系。我们尊重您的隐私权，详见我们的
-            <a href="">隐私声明</a>
+            <a href>隐私声明</a>
           </span>
         </el-row>
         <el-form-item class="form_submit_button">
@@ -82,15 +71,46 @@
         </el-form-item>
       </el-form>
     </el-row>
+    <!-- 提示弹窗 -->
+    <div class="toast" v-show="isToast">
+      <span>{{ toast }}</span>
+    </div>
   </el-row>
 </template>
 <script>
-import { provinceAndCityData } from "element-china-area-data";
+import { provinceAndCityData, CodeToText } from "element-china-area-data";
 export default {
   name: "VeritasRightModule",
   data() {
+    let checkphone = (rule, value, callback) => {
+      // let phoneReg = /(^1[3|4|5|6|7|8|9]\d{9}$)|(^09\d{8}$)/;
+      if (value == "") {
+        callback(new Error("请输入手机号"));
+      } else if (!this.isCellPhone(value)) {
+        //引入methods中封装的检查手机格式的方法
+        callback(new Error("请输入正确的手机号!"));
+      } else {
+        callback();
+      }
+    };
+    let checkEmail = (rule, value, callback) => {
+      if (!value) {
+        return callback(new Error("请输入邮箱"));
+      } else {
+        const reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+        if (!reg.test(value)) {
+          return callback(new Error("请输入正确的邮箱"));
+        } else {
+          callback();
+        }
+      }
+    };
     return {
+      agreeChecked: true,
+      isToast: false, //提示
+      toast: "", //提示内容
       options: provinceAndCityData,
+      codeToText: CodeToText,
       positionOptions: [
         {
           value: "总裁",
@@ -271,38 +291,125 @@ export default {
         company: "",
         business: "",
         number: "",
-        city: [],
-        agreeChecked: false
+        city: []
       },
       rules: {
         name: [{ required: true, message: "请输入姓名", trigger: "blur" }],
-        phone: [{ required: true, message: "请输入手机", trigger: "blur" }],
-        email: [{ required: true, message: "请输入电子邮箱", trigger: "blur" }],
-        department: [{ required: true, message: "请输入部门", trigger: "blur" }],
-        position: [{ required: true, message: "请选择职位", trigger: "change" }],
-        company: [{ required: true, message: "请输入公司名称", trigger: "blur" }],
-        business: [{ required: true, message: "请选择行业", trigger: "change" }],
-        number: [{ required: true, message: "请选择员工人数", trigger: "change" }],
+        phone: [{ required: true, validator: checkphone, trigger: "blur" }],
+        email: [{ required: true, validator: checkEmail, trigger: "blur" }],
+        department: [
+          { required: true, message: "请输入部门", trigger: "blur" }
+        ],
+        position: [
+          { required: true, message: "请选择职位", trigger: "change" }
+        ],
+        company: [
+          { required: true, message: "请输入公司名称", trigger: "blur" }
+        ],
+        business: [
+          { required: true, message: "请选择行业", trigger: "change" }
+        ],
+        number: [
+          { required: true, message: "请选择员工人数", trigger: "change" }
+        ],
         city: [{ required: true, message: "请选择城市", trigger: "change" }]
       }
     };
   },
   methods: {
-    handleChange(value) {
-      console.log(value);
+    //手机号验证
+    isCellPhone(val) {
+      let reg = /^1[3|4|5|6|7|8|9][0-9]\d{8}$/;
+      if (!reg.test(val)) {
+        return false;
+      } else {
+        return true;
+      }
     },
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-          alert("submit!");
+          if (this.agreeChecked) {
+            let params = {
+              name: this.ruleForm.name,
+              company: this.ruleForm.company,
+              job: this.ruleForm.position,
+              department: this.ruleForm.department,
+              mobile: this.ruleForm.phone,
+              email: this.ruleForm.email,
+              province: this.codeToText[this.ruleForm.city[0]],
+              city: this.codeToText[this.ruleForm.city[1]],
+              industry: this.ruleForm.business,
+              password: "123456",
+              stuff_num: this.ruleForm.number,
+              original: "demonstration" //请求演示
+            };
+            this.$api
+              .register(params)
+              .then(res => {
+                if (res.code == 200) {
+                  this.isToast = true;
+                  this.toast = "注册成功";
+                  setTimeout(() => {
+                    this.isToast = false;
+                    this.login(this.ruleForm.email);
+                  }, 2000);
+                } else {
+                  this.isToast = true;
+                  this.toast = res.msg;
+                  setTimeout(() => {
+                    this.isToast = false;
+                  }, 2000);
+                }
+              })
+              .catch(error => {
+                this.isToast = true;
+                this.toast = error.msg;
+                setTimeout(() => {
+                  this.isToast = false;
+                }, 2000);
+              });
+          } else {
+            this.isToast = true;
+            this.toast = "请勾选我同意 Veritas 就产品和促销信息与我联系";
+            setTimeout(() => {
+              this.isToast = false;
+            }, 2000);
+          }
         } else {
-          console.log("error submit!!");
           return false;
         }
       });
     },
-    resetForm(formName) {
-      this.$refs[formName].resetFields();
+
+    // 提交登录
+    login(email) {
+      let params = {
+        email: email,
+        password: 123456
+      };
+      this.$api
+        .login(params)
+        .then(res => {
+          console.log(res);
+          let data = res;
+          this.logining = false;
+          this.isToast = false;
+          let expires_in = parseInt(data.expires_in);
+          let expiresDate = new Date().getTime() + expires_in * 1000;
+          localStorage.setItem(
+            "localData",
+            JSON.stringify({
+              token: data.access_token,
+              validTime: expiresDate
+            })
+          ); //本地存放token有效时间validTime
+
+          this.$router.replace("/");
+        })
+        .catch(error => {
+          console.log(error);
+        });
     }
   }
 };

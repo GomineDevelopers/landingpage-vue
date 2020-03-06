@@ -49,6 +49,32 @@ body {
   margin-top: 25px;
 }
 
+.toast {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 9999;
+  box-sizing: content-box;
+  min-width: 96px;
+  max-width: 70%;
+  padding: 40px 20px;
+  color: #fff;
+  font-size: 16px;
+  line-height: 20px;
+  white-space: pre-wrap;
+  text-align: center;
+  word-wrap: break-word;
+  background-color: rgba(50, 50, 51, 0.88);
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+  -moz-transform: translate3d(-50%, -50%, 0);
+  -ms-transform: translate3d(-50%, -50%, 0);
+  transform: translate3d(-50%, -50%, 0);
+}
+
 .main_content_text {
   font-size: 18px;
   color: rgba(0, 0, 0, 0.7);
@@ -204,7 +230,10 @@ body {
   color: #cd3c44;
   font-size: 18px;
   cursor: pointer;
-  /* padding-left: 21px; */
+}
+
+.watch_button1 {
+  padding-left: 21px;
 }
 
 .watch_button img {
@@ -246,6 +275,10 @@ body {
   padding: 5% 10%;
   background: url("../assets/bg.png") no-repeat;
   background-size: 100% 100%;
+}
+
+.data_manage_body1 img {
+  cursor: pointer;
 }
 
 .data_manage_body1_item {
@@ -299,6 +332,7 @@ body {
 .data_manage_body2_right img {
   width: 140px;
   margin-left: 10px;
+  cursor: pointer;
 }
 
 .data_manage_body2_row2_title {
@@ -330,7 +364,7 @@ body {
 }
 
 .data_manage_body2_row2_button .data_manage_body2_row2_button {
-  width: 32%;
+  width: 34%;
 }
 
 .data_manage_body2_row2_button .data_manage_body2_row2_button img {
@@ -408,36 +442,40 @@ body {
   margin: 20px 0px 25px 0px;
 }
 
-.home .el-dialog {
+.home .video_dialog .el-dialog {
   margin-top: 0vh !important;
   width: 70%;
 }
 
-.home .el-dialog .el-dialog__header {
+.home .video_dialog .el-dialog .el-dialog__header {
   padding: 0;
 }
 
-.home .el-dialog .el-dialog__headerbtn {
+.home .video_dialog .el-dialog .el-dialog__headerbtn {
   z-index: 9;
   font-size: 24px;
   top: 0;
   right: 0;
 }
 
-.home .el-dialog .el-dialog__headerbtn .el-dialog__close {
+.home .video_dialog .el-dialog .el-dialog__headerbtn .el-dialog__close {
   /* border: 2px solid #ccc; */
   color: #ccc;
   border-radius: 50%;
   font-weight: bold;
 }
 
-.home .el-dialog .el-dialog__body {
+.home .video_dialog .el-dialog .el-dialog__body {
   padding: 0;
   background: #000;
 }
 
 .video_body {
   width: 100%;
+}
+
+.login_button {
+  text-align: right;
 }
 
 /* 注册页开始 */
@@ -942,15 +980,18 @@ body {
 
   .content_body1 .content_body1_title2 {
     font-size: 16px;
+    padding-left: 13px;
   }
 
   .content_body1_content {
     font-size: 14px;
     line-height: 27px;
+    padding-left: 13px;
   }
 
   .watch_button {
-    font-size: 13px;
+    font-size: 14px;
+    padding-left: 13px;
   }
 
   .content_body1_right img:nth-child(1) {
@@ -1042,7 +1083,7 @@ body {
   }
 
   .data_manage_body2_row2_button .data_manage_body2_row2_button {
-    width: 85%;
+    width: 90%;
   }
 
   .data_manage_body2_row2_button .data_manage_body2_row2_button .el-row {
@@ -1059,7 +1100,7 @@ body {
 
   .bottom_content {
     margin-top: 10px;
-    font-size: 14px
+    font-size: 14px;
   }
 
   .bottom_right_attention {
@@ -1221,9 +1262,10 @@ body {
 
   .data_manage_body2_row2_title {
     background-size: 200px 100%;
+    width: 90%;
   }
 
-  .home .el-dialog {
+  .home .video_dialog .el-dialog {
     width: 100%;
   }
 
@@ -1232,7 +1274,7 @@ body {
   }
 
   .data_manage_body1_item {
-    margin-top: 30px
+    margin-top: 30px;
   }
 
   .banner_content {
@@ -1245,5 +1287,10 @@ body {
 
   .data_manage_body1 {
     padding: 30px 15px;
+  }
+
+  .data_manage_body2_row1 {
+    padding-right: 15px;
+    margin: 40px 0 40px 15px;
   }
 }

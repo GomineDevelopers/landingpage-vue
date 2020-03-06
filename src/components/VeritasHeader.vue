@@ -1,6 +1,10 @@
 <template>
   <el-row>
-    <el-row class="logo flex flex_align_center"><img src="../assets/logo2.png"/></el-row>
+    <el-row class="logo flex flex_align_center">
+      <router-link class="flex flex_align_center" :to="{ path: '/' }">
+        <img src="../assets/logo2.png" />
+      </router-link>
+    </el-row>
     <!-- banner开始 -->
     <el-row class="top_big_img">
       <img class="hidden-xs-only" src="../assets/top_big_logo.png" />
