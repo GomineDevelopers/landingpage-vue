@@ -106,6 +106,7 @@ export default {
       }
     };
     return {
+      original: "", //数据来源
       agreeChecked: true,
       isToast: false, //提示
       toast: "", //提示内容
@@ -316,6 +317,11 @@ export default {
       }
     };
   },
+  mounted() {
+    this.original = this.$route.query.original
+      ? this.$route.query.original
+      : "未知来源";
+  },
   methods: {
     //手机号验证
     isCellPhone(val) {
@@ -342,7 +348,7 @@ export default {
               industry: this.ruleForm.business,
               password: "123456",
               stuff_num: this.ruleForm.number,
-              original: "demonstration" //请求演示
+              original: this.original //数据来源
             };
             this.$api
               .register(params)
@@ -391,7 +397,6 @@ export default {
       this.$api
         .login(params)
         .then(res => {
-          console.log(res);
           let data = res;
           this.logining = false;
           this.isToast = false;
@@ -408,6 +413,11 @@ export default {
           this.$router.replace("/");
         })
         .catch(error => {
+          this.isToast = true;
+          this.toast = error.msg;
+          setTimeout(() => {
+            this.isToast = false;
+          }, 2000);
           console.log(error);
         });
     }

@@ -12,18 +12,8 @@
         <img class="hidden-sm-and-up" src="../assets/phone_big_logo.png" />
         <el-row class="top_content">
           <el-row class="top_content_body">
-            <img class="hidden-xs-only" src="../assets/top_banner_content.png" />
-            <img class="hidden-sm-and-up" src="../assets/top_banner_content_phone.png" />
-            <el-row class="top_content_button flex">
-              <img class="hidden-xs-only" src="../assets/top_button1.png" />
-              <img class="hidden-sm-and-up" src="../assets/phone_top_button2.png" />
-
-              <span class="flex flex_align_center flex_justify_center">
-                <i></i>
-              </span>
-              <img class="hidden-xs-only" src="../assets/top_button2.png" />
-              <img class="hidden-sm-and-up" src="../assets/phone_top_button1.png" />
-            </el-row>
+            <img class="hidden-xs-only" src="../assets/register_banner.png" />
+            <img class="hidden-sm-and-up" src="../assets/register_banner_phone.png" />
           </el-row>
         </el-row>
       </el-row>

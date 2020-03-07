@@ -277,7 +277,7 @@ body {
   background-size: 100% 100%;
 }
 
-.data_manage_body1 img {
+.data_manage_body1 img.content_body2_img1 {
   cursor: pointer;
 }
 
@@ -456,6 +456,16 @@ body {
   font-size: 24px;
   top: 0;
   right: 0;
+}
+
+.home .video_dialog .el-dialog .video_close {
+  position: absolute;
+  top: -14px;
+  right: -16px;
+  font-size: 22px;
+  padding: 6px;
+  border: none;
+  cursor: pointer;
 }
 
 .home .video_dialog .el-dialog .el-dialog__headerbtn .el-dialog__close {
@@ -1267,6 +1277,17 @@ body {
 
   .home .video_dialog .el-dialog {
     width: 100%;
+  }
+
+  .home .login_dialog .el-dialog {
+    width: 95%;
+  }
+
+  .home .video_dialog .el-dialog .video_close {
+    top: auto;
+    bottom: -50px;
+    right: 50%;
+    margin-right: -22px;
   }
 
   .video_body {

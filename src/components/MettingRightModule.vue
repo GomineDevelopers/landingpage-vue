@@ -113,6 +113,7 @@ export default {
       }
     };
     return {
+      original: "", //来源
       isToast: false, //提示
       toast: "", //提示内容
       agreeChecked: true,
@@ -323,6 +324,11 @@ export default {
       }
     };
   },
+  mounted() {
+    this.original = this.$route.query.original
+      ? this.$route.query.original
+      : "未知来源";
+  },
   methods: {
     //手机号验证
     isCellPhone(val) {
@@ -350,7 +356,7 @@ export default {
               industry: this.ruleForm.business,
               password: "123456",
               stuff_num: this.ruleForm.number,
-              original: "attendMeetings" //报名参会
+              original: this.original //数据来源
             };
             console.log(params);
             this.$api

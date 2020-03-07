@@ -417,7 +417,7 @@
               toNewPage({
 										link: 'https://www.veritas.com/zh/cn/customer-success',
                     msg:'更多客户',
-										code: 'ZLD-009-L'
+										code: 'ZLD-009-M'
 									})"
               />
             </el-row>
@@ -490,7 +490,7 @@
       title="登录"
       :close-on-click-modal="false"
       :lock-scroll="true"
-      class="flex flex_align_center flex_justify_center"
+      class="flex flex_align_center flex_justify_center login_dialog"
       :visible.sync="showLogin"
     >
       <el-form
@@ -518,10 +518,20 @@
     <el-dialog
       :close-on-click-modal="false"
       :lock-scroll="true"
+      :show-close="false"
+      center
       class="flex flex_align_center flex_justify_center video_dialog"
       :visible.sync="dialogTableVisible"
     >
+      <el-button
+        @click.native="closeVideo"
+        title="关闭"
+        class="video_close"
+        icon="el-icon-close"
+        circle
+      ></el-button>
       <video
+        id="video"
         class="video_body"
         controls
         x5-playsinline
@@ -535,6 +545,19 @@
 </template>
 
 <script>
+// 获取网页参数
+let getQueryVariable = variable => {
+  var query = window.location.href;
+  var link = query.split("?")[1];
+  var vars = link.split("&");
+  for (var i = 0; i < vars.length; i++) {
+    var pair = vars[i].split("=");
+    if (pair[0] == variable) {
+      return pair[1];
+    }
+  }
+  return false;
+};
 export default {
   name: "Home",
   data() {
@@ -551,7 +574,7 @@ export default {
       }
     };
     return {
-      original: "", //注册来源  报名参会：attendMeetings   请求演示：demonstration
+      original: "", //注册来源
       tempPdfSrc: "", //pdf地址
       trackPdfoMsg: "", //pdf名称
       dialogTableVisible: false, //视频播放弹窗
@@ -572,16 +595,20 @@ export default {
       toast: "" //提示内容
     };
   },
-  mounted() {},
+  mounted() {
+    this.$nextTick(() => {
+      this.original = getQueryVariable("original");
+      console.log(this.original);
+    });
+  },
   methods: {
     applyRegister() {
-      this.original = "attendMeetings"; //报名参会
       let loginOn = this.loginOn();
       this.trackCode = "BM-001-A";
       this.clickType = 3;
       if (loginOn) {
         this.isToast = true;
-        this.toast = "您已经报过名";
+        this.toast = "您已报名成功";
         setTimeout(() => {
           this.isToast = false;
         }, 1000);
@@ -589,7 +616,6 @@ export default {
       }
     },
     demonstrationRegister() {
-      this.original = "demonstration"; //请求演示
       let loginOn = this.loginOn();
       // console.log(loginOn);
       this.trackCode = "BM-002-D";
@@ -618,6 +644,12 @@ export default {
     playVideo() {
       this.dialogTableVisible = true;
       this.track(this.trackVideoMsg);
+    },
+    // 关闭视频弹窗
+    closeVideo() {
+      this.dialogTableVisible = false;
+      let vdo = document.getElementById("video");
+      vdo.pause();
     },
     // 点击pdf下载
     downloadPdf(obj) {
@@ -699,7 +731,6 @@ export default {
       this.$api
         .login(params)
         .then(res => {
-          console.log(res);
           let data = res;
           this.logining = false;
           this.isToast = false;
@@ -723,7 +754,7 @@ export default {
               break;
             case 3:
               this.isToast = true;
-              this.toast = "登录成功";
+              this.toast = "报名成功";
               setTimeout(() => {
                 this.isToast = false;
               }, 1000);
@@ -731,7 +762,7 @@ export default {
               break;
             case 4:
               this.isToast = true;
-              this.toast = "登录成功";
+              this.toast = "请求成功";
               setTimeout(() => {
                 this.isToast = false;
               }, 1000);
@@ -785,6 +816,8 @@ export default {
     },
     // 刷新token
     refresh() {
+      // this.toast = "刷新token";
+      // this.isToast = true;
       let localData = JSON.parse(localStorage.getItem("localData"));
       let params = {
         token: localData.token
@@ -819,15 +852,24 @@ export default {
     },
     //跳转注册页面
     goRegister() {
-      switch (this.original) {
-        case "attendMeetings":
-          this.$router.push("/register");
+      switch (this.clickType) {
+        case 3:
+          this.$router.push({
+            path: "/register",
+            query: { original: this.original }
+          });
           break;
-        case "demonstration":
-          this.$router.push("/veritasregister");
+        case 4:
+          this.$router.push({
+            path: "/veritasregister",
+            query: { original: this.original }
+          });
           break;
         default:
-          this.$router.push("/register");
+          this.$router.push({
+            path: "/register",
+            query: { original: this.original }
+          });
           break;
       }
     }
