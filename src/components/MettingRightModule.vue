@@ -70,7 +70,10 @@
           <el-checkbox v-model="agreeChecked"></el-checkbox>
           <span>
             我同意 Veritas 就产品和促销信息与我联系。我们尊重您的隐私权，详见我们的
-            <a href>隐私声明</a>
+            <a
+              href="https://www.veritas.com/company/privacy?cname=20Q2-APJ-ZH%2FCN-NBU-Ransomware-PostEvent-Journey&eid=9554&cid=&elqTrackId=49f25dafdbc04e67b1bff63fc3f13072&elq=5d8e52fac74740c79ca2551dfb62648b&elqaid=9554&elqat=1&elqCampaignId=8681"
+              target="_blank"
+            >隐私声明</a>
           </span>
         </el-row>
         <el-form-item class="form_submit_button">

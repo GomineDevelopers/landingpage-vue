@@ -74,12 +74,12 @@
               class="banner_list_button"
               @click.native="
                 downloadPdf({
-											name: 'V0885_GA_ENT_WP-5-Steps-to-Reducing-Storage-Costs-EN-2.pdf',
+											name: 'V0991 APTARE_Knows_Guide_use case EN.pdf',
 											msg: 'APTARE应用指南',
 											code: 'ZLD-002-P'
 										})
               "
-            >下载白皮书 ›</el-row>
+            >下载指南 ›</el-row>
           </el-row>
         </el-col>
         <el-col :xs="24" :sm="24" :md="8" class="flex">
@@ -378,7 +378,7 @@
                   class="watch_button watch_button1 flex flex_align_center"
                   @click.native="
                     downloadPdf({
-											name: 'V0878_GA_ENT_DS-Aptare-Supported-Environments-EN-4.pdf',
+											name: 'V0877_APTARE IT Analytics_打造混合云环境的统一 IT 分析 CN.pdf',
 											msg: 'APTARE IT Analytics 10.3 新增功能',
 											code: 'ZLD-004-P'
 										})
@@ -541,6 +541,99 @@
         :src="tempVideoSrc"
       ></video>
     </el-dialog>
+    <!-- 注册弹窗 -->
+    <el-dialog
+      :close-on-click-modal="false"
+      :lock-scroll="true"
+      :show-close="false"
+      center
+      class="flex flex_align_center flex_justify_center register_dialog"
+      :visible.sync="registerDialog"
+    >
+      <el-button
+        @click.native="closeRegisterDialog"
+        title="关闭"
+        class="register_close"
+        icon="el-icon-close"
+        circle
+      ></el-button>
+      <el-row>
+        <img class="text_left_icon" src="../assets/content_body1_icon1.png" />
+        <span class="metting_title">{{registerDialogTitle}}</span>
+      </el-row>
+      <el-row class="main_font1">{{registerDialogNotice}}</el-row>
+      <el-row class="form_content">
+        <el-form
+          :model="registerRuleForm"
+          :rules="registerRule"
+          ref="registerRuleForm"
+          label-width="100px"
+          class="demo-ruleForm"
+        >
+          <el-form-item label="姓名" prop="name">
+            <el-input v-model="registerRuleForm.name"></el-input>
+          </el-form-item>
+          <el-form-item label="手机" prop="phone">
+            <el-input v-model="registerRuleForm.phone"></el-input>
+          </el-form-item>
+          <el-form-item label="电子邮箱" prop="email">
+            <el-input v-model="registerRuleForm.email"></el-input>
+          </el-form-item>
+          <el-form-item label="部门" prop="department">
+            <el-input v-model="registerRuleForm.department"></el-input>
+          </el-form-item>
+          <el-form-item label="职位" prop="position">
+            <el-select v-model="registerRuleForm.position" placeholder="请选择">
+              <el-option
+                v-for="item in positionOptions"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              ></el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item label="公司名称" prop="company">
+            <el-input v-model="registerRuleForm.company"></el-input>
+          </el-form-item>
+          <el-form-item label="行业" prop="business">
+            <el-select v-model="registerRuleForm.business" placeholder="请选择">
+              <el-option
+                v-for="item in businessOptions"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              ></el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item label="员工人数" prop="number">
+            <el-select v-model="registerRuleForm.number" placeholder="请选择">
+              <el-option
+                v-for="item in numberOptions"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              ></el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item label="省份、城市" prop="city">
+            <el-cascader size="large" :options="options" v-model="registerRuleForm.city"></el-cascader>
+          </el-form-item>
+          <el-row class="declare_text flex">
+            <el-checkbox v-model="agreeChecked"></el-checkbox>&nbsp;
+            <span>
+              我同意 Veritas 就产品和促销信息与我联系。我们尊重您的隐私权，详见我们的
+              <a
+                href="https://www.veritas.com/company/privacy?cname=20Q2-APJ-ZH%2FCN-NBU-Ransomware-PostEvent-Journey&eid=9554&cid=&elqTrackId=49f25dafdbc04e67b1bff63fc3f13072&elq=5d8e52fac74740c79ca2551dfb62648b&elqaid=9554&elqat=1&elqCampaignId=8681"
+                target="_blank"
+              >隐私声明</a>
+            </span>
+          </el-row>
+          <el-form-item class="form_submit_button">
+            <el-button type="primary" @click="submitForm('registerRuleForm')">立即提交</el-button>
+          </el-form-item>
+        </el-form>
+      </el-row>
+    </el-dialog>
   </el-row>
 </template>
 
@@ -558,6 +651,7 @@ let getQueryVariable = variable => {
   }
   return false;
 };
+import { provinceAndCityData, CodeToText } from "element-china-area-data";
 export default {
   name: "Home",
   data() {
@@ -571,6 +665,17 @@ export default {
         } else {
           callback();
         }
+      }
+    };
+    let checkphone = (rule, value, callback) => {
+      // let phoneReg = /(^1[3|4|5|6|7|8|9]\d{9}$)|(^09\d{8}$)/;
+      if (value == "") {
+        callback(new Error("请输入手机号"));
+      } else if (!this.isCellPhone(value)) {
+        //引入methods中封装的检查手机格式的方法
+        callback(new Error("请输入正确的手机号!"));
+      } else {
+        callback();
       }
     };
     return {
@@ -592,7 +697,218 @@ export default {
       showLogin: false, //登录弹框
       logining: false, //登录中
       isToast: false, //提示
-      toast: "" //提示内容
+      toast: "", //提示内容
+
+      //表单注册
+      registerDialog: false, //注册弹窗
+      registerDialogTitle: "", //注册弹框的title
+      registerDialogNotice: "", //注册弹框的title
+      agreeChecked: true,
+      options: provinceAndCityData,
+      codeToText: CodeToText,
+      positionOptions: [
+        {
+          value: "总裁",
+          label: "总裁"
+        },
+        {
+          value: "副总裁",
+          label: "副总裁"
+        },
+        {
+          value: "首席执行官",
+          label: "首席执行官"
+        },
+        {
+          value: "首席信息官",
+          label: "首席信息官"
+        },
+        {
+          value: "首席运营官",
+          label: "首席运营官"
+        },
+        {
+          value: "首席技术官",
+          lable: "首席技术官"
+        },
+        {
+          value: "财务总管",
+          lable: "财务总管"
+        },
+        {
+          value: "运营及维护总管",
+          lable: "运营及维护总管"
+        },
+        {
+          value: "法务及合规",
+          lable: "法务及合规"
+        },
+        {
+          value: "IT总监",
+          lable: "IT总监"
+        },
+        {
+          value: "IT经理",
+          lable: "IT经理"
+        },
+        {
+          value: "IT架构师",
+          lable: "IT架构师"
+        },
+        {
+          value: "云架构师",
+          lable: "云架构师"
+        },
+        {
+          value: "IT管理员",
+          lable: "IT管理员"
+        },
+        {
+          value: "数据库管理员",
+          lable: "数据库管理员"
+        },
+        {
+          value: "虚拟化管理员",
+          lable: "虚拟化管理员"
+        },
+        {
+          value: "市场和运营人员",
+          lable: "市场和运营人员"
+        },
+        {
+          value: "其他",
+          lable: "其他"
+        }
+      ], //职位选择
+      businessOptions: [
+        {
+          value: "政府",
+          label: "政府"
+        },
+        {
+          value: "制造业",
+          label: "制造业"
+        },
+        {
+          value: "电信",
+          label: "电信"
+        },
+        {
+          value: "交通运输",
+          label: "交通运输"
+        },
+        {
+          value: "旅游休闲",
+          label: "旅游休闲"
+        },
+        {
+          value: "传媒娱乐",
+          lable: "传媒娱乐"
+        },
+        {
+          value: "物流",
+          lable: "物流"
+        },
+        {
+          value: "教育",
+          lable: "教育"
+        },
+        {
+          value: "零售",
+          lable: "零售"
+        },
+        {
+          value: "房地产",
+          lable: "房地产"
+        },
+        {
+          value: "政府公共事业",
+          lable: "政府公共事业"
+        },
+        {
+          value: "医疗保健",
+          lable: "医疗保健"
+        },
+        {
+          value: "制药",
+          lable: "制药"
+        },
+        {
+          value: "银行",
+          lable: "银行"
+        },
+        {
+          value: "证券理财",
+          lable: "证券理财"
+        },
+        {
+          value: "期货和基金",
+          lable: "期货和基金"
+        },
+        {
+          value: "保险",
+          lable: "保险"
+        },
+        {
+          value: "高新技术",
+          lable: "高新技术"
+        },
+        {
+          value: "互联网",
+          lable: "互联网"
+        },
+        {
+          value: "电子商务",
+          lable: "电子商务"
+        },
+        {
+          value: "其他",
+          lable: "其他"
+        }
+      ], //行业选择
+      numberOptions: [
+        { value: "1-10", label: "1-10" },
+        { value: "11-50", label: "11-50" },
+        { value: "51-100", label: "51-100" },
+        { value: "101-250", label: "101-250" },
+        { value: "251-500", label: "251-500" },
+        { value: "501-1000", label: "501-1000" },
+        { value: "1001-2500", label: "1001-2500" },
+        { value: "2501-5000", label: "2501-5000" },
+        { value: "5000+", label: "5000+" }
+      ], //人数选择
+      registerRuleForm: {
+        name: "",
+        phone: "",
+        email: "",
+        department: "",
+        position: "",
+        company: "",
+        business: "",
+        number: "",
+        city: []
+      },
+      registerRule: {
+        name: [{ required: true, message: "请输入姓名", trigger: "blur" }],
+        phone: [{ required: true, validator: checkphone, trigger: "blur" }],
+        email: [{ required: true, validator: checkEmail, trigger: "blur" }],
+        department: [
+          { required: true, message: "请输入部门", trigger: "blur" }
+        ],
+        position: [
+          { required: true, message: "请选择职位", trigger: "change" }
+        ],
+        company: [
+          { required: true, message: "请输入公司名称", trigger: "blur" }
+        ],
+        business: [
+          { required: true, message: "请选择行业", trigger: "change" }
+        ],
+        number: [
+          { required: true, message: "请选择员工人数", trigger: "change" }
+        ],
+        city: [{ required: true, message: "请选择城市", trigger: "change" }]
+      }
     };
   },
   mounted() {
@@ -602,6 +918,7 @@ export default {
     });
   },
   methods: {
+    //报名参会
     applyRegister() {
       let loginOn = this.loginOn();
       this.trackCode = "BM-001-A";
@@ -615,6 +932,7 @@ export default {
         this.track("报名参会");
       }
     },
+    //申请演示
     demonstrationRegister() {
       let loginOn = this.loginOn();
       // console.log(loginOn);
@@ -629,7 +947,7 @@ export default {
         this.track("请求演示");
       }
     },
-    //观看视频
+    //点击观看视频
     showVideo(arr) {
       let loginOn = this.loginOn();
       this.tempVideoSrc = arr.src;
@@ -734,6 +1052,7 @@ export default {
           let data = res;
           this.logining = false;
           this.isToast = false;
+          this.$refs["registerRuleForm"].resetFields();
           let expires_in = parseInt(data.expires_in);
           let expiresDate = new Date().getTime() + expires_in * 1000;
           localStorage.setItem(
@@ -850,9 +1169,22 @@ export default {
           });
         });
     },
-    //跳转注册页面
+    //根据点击按钮类型跳转注册页面  （点击视频和下载pdf弹出注册框，点击报名和申请跳转注册页面）
     goRegister() {
+      // 0: 无类型  1: 视频， 2: 下载PDF， 3: 报名参会， 4: 请求演示， 5: 跳转外链
       switch (this.clickType) {
+        case 1:
+          this.showLogin = false;
+          this.registerDialog = true;
+          this.registerDialogTitle = "观看视频";
+          this.registerDialogNotice = "填写表格，在线观看视频";
+          break;
+        case 2:
+          this.showLogin = false;
+          this.registerDialog = true;
+          this.registerDialogTitle = "资料下载";
+          this.registerDialogNotice = "填写表格，下载Veritas资料";
+          break;
         case 3:
           this.$router.push({
             path: "/register",
@@ -865,13 +1197,82 @@ export default {
             query: { original: this.original }
           });
           break;
-        default:
+        case 5:
           this.$router.push({
             path: "/register",
             query: { original: this.original }
           });
           break;
       }
+    },
+    //手机号验证
+    isCellPhone(val) {
+      let reg = /^1[3|4|5|6|7|8|9][0-9]\d{8}$/;
+      if (!reg.test(val)) {
+        return false;
+      } else {
+        return true;
+      }
+    },
+    submitForm(formName) {
+      this.$refs[formName].validate(valid => {
+        if (valid) {
+          if (this.agreeChecked) {
+            let params = {
+              name: this.registerRuleForm.name,
+              company: this.registerRuleForm.company,
+              job: this.registerRuleForm.position,
+              department: this.registerRuleForm.department,
+              mobile: this.registerRuleForm.phone,
+              email: this.registerRuleForm.email,
+              province: this.codeToText[this.registerRuleForm.city[0]],
+              city: this.codeToText[this.registerRuleForm.city[1]],
+              industry: this.registerRuleForm.business,
+              password: "123456",
+              stuff_num: this.registerRuleForm.number,
+              original: this.original //数据来源
+            };
+            this.$api
+              .register(params)
+              .then(res => {
+                if (res.code == 200) {
+                  this.isToast = true;
+                  this.toast = "注册成功";
+                  setTimeout(() => {
+                    this.isToast = false;
+                    this.registerDialog = false;
+                    this.login(this.registerRuleForm.email);
+                  }, 2000);
+                } else {
+                  this.isToast = true;
+                  this.toast = res.msg;
+                  setTimeout(() => {
+                    this.isToast = false;
+                  }, 2000);
+                }
+              })
+              .catch(error => {
+                this.isToast = true;
+                this.toast = error.msg;
+                setTimeout(() => {
+                  this.isToast = false;
+                }, 2000);
+              });
+          } else {
+            this.isToast = true;
+            this.toast = "请勾选我同意 Veritas 就产品和促销信息与我联系";
+            setTimeout(() => {
+              this.isToast = false;
+            }, 2000);
+          }
+        } else {
+          return false;
+        }
+      });
+    },
+    closeRegisterDialog() {
+      this.registerDialog = false;
+      this.$refs["registerRuleForm"].resetFields();
     }
   }
 };

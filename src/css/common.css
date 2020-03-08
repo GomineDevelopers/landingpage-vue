@@ -311,7 +311,7 @@ body {
   width: calc(100% - 5%);
   margin: 40px 0 40px 5%;
   border-bottom: 1px solid #ccc;
-  padding-right: 200px;
+  padding-right: 160px;
 }
 
 .data_manage_body2_row2 {
@@ -320,17 +320,17 @@ body {
 }
 
 .data_manage_body2_right {
-  width: 180px;
+  width: 160px;
   height: 380px;
-  position: absolute;
+  position: fixed;
   right: 0;
-  top: -210px;
+  top: 30%;
   background: url("../assets/data_manage_body2_img2.png") no-repeat;
   background-size: 100% 100%;
 }
 
 .data_manage_body2_right img {
-  width: 140px;
+  width: 130px;
   margin-left: 10px;
   cursor: pointer;
 }
@@ -447,6 +447,38 @@ body {
   width: 70%;
 }
 
+.home .register_dialog .el-dialog {
+  height: 90vh;
+  overflow-y: auto;
+  margin-top: 5vh !important;
+  position: relative;
+  background: rgba(200, 200, 200, 1)
+}
+
+.home .register_dialog .el-dialog::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background-color: rgba(200, 200, 200, 1)
+}
+
+.home .register_dialog .el-dialog::-webkit-scrollbar {
+  width: 6px;
+}
+
+.home .register_dialog .el-dialog::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #666;
+}
+
+.home .register_dialog .el-dialog .el-dialog__header {
+  padding: 0;
+}
+
+.home .register_dialog .el-dialog .register_close {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
 .home .video_dialog .el-dialog .el-dialog__header {
   padding: 0;
 }
@@ -466,6 +498,7 @@ body {
   padding: 6px;
   border: none;
   cursor: pointer;
+  z-index: 9;
 }
 
 .home .video_dialog .el-dialog .el-dialog__headerbtn .el-dialog__close {
@@ -1283,6 +1316,12 @@ body {
     width: 95%;
   }
 
+  .home .register_dialog .el-dialog {
+    width: 95%;
+    height: 90vh;
+    overflow-y: auto;
+  }
+
   .home .video_dialog .el-dialog .video_close {
     top: auto;
     bottom: -50px;
@@ -1313,5 +1352,10 @@ body {
   .data_manage_body2_row1 {
     padding-right: 15px;
     margin: 40px 0 40px 15px;
+  }
+
+  .el-popper.el-cascader__dropdown {
+    left: 5px !important;
+    width: 96%;
   }
 }
