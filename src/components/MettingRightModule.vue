@@ -332,9 +332,9 @@ export default {
       ? this.$route.query.original
       : "未知来源";
 
-    console.log(this.$store.state.actionMessage);
-    console.log(this.$store.state.clickType);
-    console.log(this.$store.state.tempLinkSrc);
+    // console.log(this.$store.state.actionMessage);
+    // console.log(this.$store.state.clickType);
+    // console.log(this.$store.state.tempLinkSrc);
   },
   methods: {
     //手机号验证
@@ -468,6 +468,13 @@ export default {
                 }, 1000);
                 break;
             }
+          } else {
+            this.isToast = true;
+            this.toast = res.msg;
+            setTimeout(() => {
+              this.isToast = false;
+              this.$router.replace("/");
+            }, 1000);
           }
         })
         .catch(err => {

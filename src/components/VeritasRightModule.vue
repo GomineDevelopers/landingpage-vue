@@ -324,8 +324,8 @@ export default {
     this.original = this.$route.query.original
       ? this.$route.query.original
       : "未知来源";
-    console.log(this.$store.state.actionMessage);
-    console.log(this.$store.state.clickType);
+    // console.log(this.$store.state.actionMessage);
+    // console.log(this.$store.state.clickType);
   },
   methods: {
     //手机号验证
