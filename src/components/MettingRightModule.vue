@@ -331,6 +331,10 @@ export default {
     this.original = this.$route.query.original
       ? this.$route.query.original
       : "未知来源";
+
+    console.log(this.$store.state.actionMessage);
+    console.log(this.$store.state.clickType);
+    console.log(this.$store.state.tempLinkSrc);
   },
   methods: {
     //手机号验证
@@ -409,7 +413,7 @@ export default {
       this.$api
         .login(params)
         .then(res => {
-          console.log(res);
+          // console.log(res);
           let data = res;
           this.logining = false;
           this.isToast = false;
@@ -423,11 +427,62 @@ export default {
             })
           ); //本地存放token有效时间validTime
 
-          this.$router.replace("/");
+          //根据store中的储存信息进行跟踪
+          this.track();
         })
         .catch(error => {
           console.log(error);
         });
+    },
+    // 信息追踪
+    track() {
+      let localData = JSON.parse(localStorage.getItem("localData"));
+      let params = {
+        msg: this.$store.state.actionMessage.msg,
+        code: this.$store.state.actionMessage.code,
+        token: localData.token
+      };
+      this.$api
+        .action(params)
+        .then(res => {
+          console.log(res);
+          if (res.code == 200) {
+            // 判断用户操作类型进行跳转
+            let clickType = this.$store.state.clickType;
+            switch (clickType) {
+              case 3:
+                this.isToast = true;
+                this.toast = "报名成功";
+                setTimeout(() => {
+                  this.isToast = false;
+                  this.$router.replace("/");
+                }, 1000);
+                break;
+              case 5:
+                this.isToast = true;
+                this.toast = "页面跳转中...";
+                this.openNewPage();
+                setTimeout(() => {
+                  this.isToast = false;
+                  this.$router.replace("/");
+                }, 1000);
+                break;
+            }
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    // 打开新页面(预览pdf或者跳转外链)
+    openNewPage() {
+      let targetA = document.createElement("a");
+      targetA.href = this.$store.state.tempLinkSrc;
+      targetA.style.display = "none";
+      targetA.target = "_blank";
+      document.body.appendChild(targetA);
+      targetA.click();
+      document.body.removeChild(targetA);
     }
   }
 };

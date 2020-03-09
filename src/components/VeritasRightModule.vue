@@ -324,6 +324,8 @@ export default {
     this.original = this.$route.query.original
       ? this.$route.query.original
       : "未知来源";
+    console.log(this.$store.state.actionMessage);
+    console.log(this.$store.state.clickType);
   },
   methods: {
     //手机号验证
@@ -413,7 +415,16 @@ export default {
             })
           ); //本地存放token有效时间validTime
 
-          this.$router.replace("/");
+          //根据store中的储存信息进行跟踪
+          // 判断用户操作类型进行跳转
+          let clickType = this.$store.state.clickType;
+          switch (clickType) {
+            case 4:
+              this.track(); // 信息追踪
+              break;
+            default:
+              this.$router.replace("/");
+          }
         })
         .catch(error => {
           this.isToast = true;
@@ -422,6 +433,37 @@ export default {
             this.isToast = false;
           }, 2000);
           console.log(error);
+        });
+    },
+    // 信息追踪
+    track() {
+      let localData = JSON.parse(localStorage.getItem("localData"));
+      let params = {
+        msg: this.$store.state.actionMessage.msg,
+        code: this.$store.state.actionMessage.code,
+        token: localData.token
+      };
+      this.$api
+        .action(params)
+        .then(res => {
+          if (res.code == 200) {
+            this.isToast = true;
+            this.toast = "您的请求已提交成功，稍后会有工作人员与您联系";
+            setTimeout(() => {
+              this.isToast = false;
+              this.$router.replace("/");
+            }, 2000);
+          } else {
+            this.isToast = true;
+            this.toast = res.msg;
+            setTimeout(() => {
+              this.isToast = false;
+              this.$router.replace("/");
+            }, 1000);
+          }
+        })
+        .catch(err => {
+          console.log(err);
         });
     }
   }

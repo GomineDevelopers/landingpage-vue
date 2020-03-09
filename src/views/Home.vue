@@ -17,11 +17,7 @@
               <img class="hidden-xs-only" src="../assets/top_banner_content.png" />
               <img class="hidden-sm-and-up" src="../assets/top_banner_content_phone.png" />
               <el-row class="top_content_button flex">
-                <img
-                  class="hidden-xs-only"
-                  src="../assets/top_button1.png"
-                  @click="applyRegister"
-                />
+                <img class="hidden-xs-only" src="../assets/top_button1.png" @click="applyRegister" />
                 <img
                   class="hidden-sm-and-up"
                   src="../assets/phone_top_button2.png"
@@ -54,9 +50,7 @@
           </span>
           <el-row>
             <el-row class="banner_list_title">面向混合云环境的分析</el-row>
-            <el-row class="banner_list_content"
-              >可通过单一面板管理操作和交付的运维数据透视分析平台</el-row
-            >
+            <el-row class="banner_list_content">可通过单一面板管理操作和交付的运维数据透视分析平台</el-row>
             <el-row
               class="banner_list_button"
               @click.native="
@@ -66,8 +60,7 @@
                   code: 'ZLD-001-P'
                 })
               "
-              >下载产品资料 ›</el-row
-            >
+            >下载产品资料 ›</el-row>
           </el-row>
         </el-col>
         <el-col :xs="24" :sm="24" :md="8" class="flex">
@@ -76,10 +69,10 @@
           </span>
           <el-row>
             <el-row class="banner_list_title">APTARE 应用指南</el-row>
-            <el-row class="banner_list_content"
-              >了解 APTARE 运维数据透视分析平台如何助力管理复杂的IT
-              环境，降低整体存储成本和用例。</el-row
-            >
+            <el-row class="banner_list_content">
+              了解 APTARE 运维数据透视分析平台如何助力管理复杂的IT
+              环境，降低整体存储成本和用例。
+            </el-row>
             <el-row
               class="banner_list_button"
               @click.native="
@@ -89,8 +82,7 @@
                   code: 'ZLD-002-P'
                 })
               "
-              >下载指南 ›</el-row
-            >
+            >下载指南 ›</el-row>
           </el-row>
         </el-col>
         <el-col :xs="24" :sm="24" :md="8" class="flex">
@@ -98,12 +90,8 @@
             <img class="banner_list_icon" src="../assets/banner_content_icon3.png" />
           </span>
           <el-row>
-            <el-row class="banner_list_title"
-              >IDC Vendor Profile：APTARE 运维数据透视分析平台</el-row
-            >
-            <el-row class="banner_list_content"
-              >了解 APTARE 运维数据透视分析平台如何解决 IT 资源管理的痛点。</el-row
-            >
+            <el-row class="banner_list_title">IDC Vendor Profile：APTARE 运维数据透视分析平台</el-row>
+            <el-row class="banner_list_content">了解 APTARE 运维数据透视分析平台如何解决 IT 资源管理的痛点。</el-row>
             <el-row
               class="banner_list_button"
               @click.native="
@@ -113,8 +101,7 @@
                   code: 'ZLD-003-P'
                 })
               "
-              >下载报告 ›</el-row
-            >
+            >下载报告 ›</el-row>
           </el-row>
         </el-col>
       </el-row>
@@ -211,12 +198,8 @@
                   可解决本地和云中备份遇到的诸多常见问题，有助于管理员发现有风险的数据，消除“误报”。Backup
                   Manager 有助于管理员查看所有尝试过的备份，并提供有助解决备份问题的洞察，例如：
                   <ul>
-                    <li>
-                      未受保护的数据发现：自动识别不在备份策略保护范围内的客户端和数据集，降低未受保护数据曝光的风险；
-                    </li>
-                    <li>
-                      可疑备份识别：判断备份软件报告的成功备份是否部分成功备份或失败备份，从而消除”误报“风险。
-                    </li>
+                    <li>未受保护的数据发现：自动识别不在备份策略保护范围内的客户端和数据集，降低未受保护数据曝光的风险；</li>
+                    <li>可疑备份识别：判断备份软件报告的成功备份是否部分成功备份或失败备份，从而消除”误报“风险。</li>
                   </ul>
                   <el-row>
                     对于在环境中使用 ServiceNow 的企业而言，只需轻轻单击一次，APTARE Backup Manager
@@ -342,12 +325,12 @@
                   成本分摊有助于 IT
                   以即服务形式提供商业模式进行运营，了解预算支出点，并按容量和性能向最终客户或业务单位收取成本。APTARE
                   IT Analytics 还可用于特定业务领域的数据增长，从而进一步让 IT 与业务目标保持一致。
-                  <span class="main_title3">APTARE IT Analytics 可帮助您：</span>
+                  <span
+                    class="main_title3"
+                  >APTARE IT Analytics 可帮助您：</span>
                   <ul>
                     <li>获得多租户环境的管理级别报告；</li>
-                    <li>
-                      查看已消耗的存储和备份及虚拟机资源，从而有效管理资源成本和需求，并且支持成本分摊；
-                    </li>
+                    <li>查看已消耗的存储和备份及虚拟机资源，从而有效管理资源成本和需求，并且支持成本分摊；</li>
                     <li>
                       将用户提升到适当水平，并根据用户需求优化存储成本和数据保护
                       <br />实现本地或云中业务IT 成本的可视化。
@@ -436,9 +419,9 @@
               “我们手动的报告系统太耗时了，而且效率低下。APTARE IT Analytics
               极大简化了这个流程，有助于集中精力关注更具战略性的问题。”
             </el-row>
-            <el-row class="flex flex_justify_center data_manage_body2_row2_title2"
-              >Chris Davidson,Trustmark National Bank 开放式系统管理副总裁兼经理</el-row
-            >
+            <el-row
+              class="flex flex_justify_center data_manage_body2_row2_title2"
+            >Chris Davidson,Trustmark National Bank 开放式系统管理副总裁兼经理</el-row>
             <el-row class="flex flex_justify_center data_manage_body2_row2_logo">
               <img src="../assets/logo3.png" />
             </el-row>
@@ -508,11 +491,7 @@
         class="hidden-sm-and-up phone_footer_bottom flex flex_justify_center flex_align_center"
         v-if="$route.path == '/'"
       >
-        <img
-          class="hidden-sm-and-up"
-          @click="applyRegister"
-          src="../assets/phone_top_button2.png"
-        />
+        <img class="hidden-sm-and-up" @click="applyRegister" src="../assets/phone_top_button2.png" />
         <img
           class="hidden-sm-and-up"
           @click="demonstrationRegister"
@@ -655,11 +634,7 @@
             </el-select>
           </el-form-item>
           <el-form-item label="省份、城市" prop="city">
-            <el-cascader
-              size="large"
-              :options="options"
-              v-model="registerRuleForm.city"
-            ></el-cascader>
+            <el-cascader size="large" :options="options" v-model="registerRuleForm.city"></el-cascader>
           </el-form-item>
           <el-row class="declare_text flex">
             <el-checkbox v-model="agreeChecked"></el-checkbox>&nbsp;
@@ -668,8 +643,7 @@
               <a
                 href="https://www.veritas.com/company/privacy?cname=20Q2-APJ-ZH%2FCN-NBU-Ransomware-PostEvent-Journey&eid=9554&cid=&elqTrackId=49f25dafdbc04e67b1bff63fc3f13072&elq=5d8e52fac74740c79ca2551dfb62648b&elqaid=9554&elqat=1&elqCampaignId=8681"
                 target="_blank"
-                >隐私声明</a
-              >
+              >隐私声明</a>
             </span>
           </el-row>
           <el-form-item class="form_submit_button">
@@ -936,11 +910,21 @@ export default {
         name: [{ required: true, message: "请输入姓名", trigger: "blur" }],
         phone: [{ required: true, validator: checkphone, trigger: "blur" }],
         email: [{ required: true, validator: checkEmail, trigger: "blur" }],
-        department: [{ required: true, message: "请输入部门", trigger: "blur" }],
-        position: [{ required: true, message: "请选择职位", trigger: "change" }],
-        company: [{ required: true, message: "请输入公司名称", trigger: "blur" }],
-        business: [{ required: true, message: "请选择行业", trigger: "change" }],
-        number: [{ required: true, message: "请选择员工人数", trigger: "change" }],
+        department: [
+          { required: true, message: "请输入部门", trigger: "blur" }
+        ],
+        position: [
+          { required: true, message: "请选择职位", trigger: "change" }
+        ],
+        company: [
+          { required: true, message: "请输入公司名称", trigger: "blur" }
+        ],
+        business: [
+          { required: true, message: "请选择行业", trigger: "change" }
+        ],
+        number: [
+          { required: true, message: "请选择员工人数", trigger: "change" }
+        ],
         city: [{ required: true, message: "请选择城市", trigger: "change" }]
       }
     };
@@ -974,6 +958,12 @@ export default {
       let loginOn = this.loginOn();
       this.trackCode = "BM-001-A";
       this.clickType = 3;
+      //储存跟踪信息和点击事件在store中
+      this.$store.commit("setActionMessage", {
+        msg: "报名参会",
+        code: "BM-001-A"
+      });
+      this.$store.commit("setClickType", 3);
       if (loginOn) {
         this.isToast = true;
         this.toast = "您已报名成功";
@@ -986,9 +976,14 @@ export default {
     //申请演示
     demonstrationRegister() {
       let loginOn = this.loginOn();
-      // console.log(loginOn);
       this.trackCode = "BM-002-D";
       this.clickType = 4;
+      //储存跟踪信息和点击事件在store中
+      this.$store.commit("setActionMessage", {
+        msg: "请求演示",
+        code: "BM-002-D"
+      });
+      this.$store.commit("setClickType", 4);
       if (loginOn) {
         this.isToast = true;
         this.toast = "您的请求已提交成功，稍后会有工作人员与您联系";
@@ -1042,6 +1037,13 @@ export default {
       this.tempLinkSrc = arr.link;
       this.trackCode = arr.code;
       this.clickType = 5;
+      //储存跟踪信息和点击事件在store中
+      this.$store.commit("setActionMessage", {
+        msg: "更多客户",
+        code: arr.code
+      });
+      this.$store.commit("setClickType", 5);
+      this.$store.commit("setTempLinkSrc", arr.link);
       if (loginOn) {
         this.toLink();
       }
