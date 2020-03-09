@@ -616,7 +616,7 @@ body {
 }
 
 .register_lecturer_img {
-  width: 100px;
+  width: 150px;
   margin-right: 20px;
 }
 
@@ -1357,5 +1357,9 @@ body {
   .el-popper.el-cascader__dropdown {
     left: 5px !important;
     width: 96%;
+  }
+  .register_lecturer_img {
+    width: 100px;
+    margin-right: 20px;
   }
 }

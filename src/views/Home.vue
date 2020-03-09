@@ -61,7 +61,7 @@
               class="banner_list_button"
               @click.native="
                 downloadPdf({
-                  name: 'V0877_GA_ENT_DS_Aptare_Data_Sheet_EN-1.pdf',
+                  name: 'V0877_APTARE IT Analytics_打造混合云环境的统一 IT 分析 CN.pdf',
                   msg: '面向混合云环境的分析',
                   code: 'ZLD-001-P'
                 })
@@ -410,7 +410,7 @@
                   class="watch_button watch_button1 flex flex_align_center"
                   @click.native="
                     downloadPdf({
-                      name: 'V0877_APTARE IT Analytics_打造混合云环境的统一 IT 分析 CN.pdf',
+                      name: 'V0878_GA_ENT_DS-Aptare-Supported-Environments-EN-4.pdf',
                       msg: 'APTARE IT Analytics 10.3 新增功能',
                       code: 'ZLD-004-P'
                     })
